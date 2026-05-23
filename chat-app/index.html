@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Realtime Chat App by Migracode Barcelona with live messaging, online user tracking, reactions, replies, and scheduled messages for seamless communication.">
+<title>Realtime Chat App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main>
+
+<div class="chat-container">
+
+<header class="chat-header">
+
+<h1>💬 Migracode Barcelona</h1>
+
+<h2>Live Chat Application</h2>
+
+</header>
+
+
+<section class="username-section" aria-labelledby="username-heading">
+
+<h3 id="username-heading" class="sr-only"> Username </h3>
+
+<label for="username" class="sr-only"> Enter Username </label>
+
+<input type="text" id="username" placeholder="Enter your username" aria-required="true"/>
+
+</section>
+
+
+<section class="online-users" aria-labelledby="users-heading">
+
+<h3 id="users-heading"> Online Users </h3>
+
+<ul id="usersList"></ul>
+
+</section>
+
+
+<section 
+id="messages" class="messages" aria-label="Chat messages" aria-live="polite">
+</section>
+
+
+<div id="typingIndicator" class="typing" aria-live="polite"></div>
+
+
+<section class="message-input-section" aria-label="Message input">
+
+<label for="colorPicker" class="sr-only"> Message color </label>
+
+<input type="color" id="colorPicker" value="#3b82f6"/>
+
+
+<label for="messageInput" class="sr-only"> Message </label>
+
+<input type="text" id="messageInput" placeholder="Type your message..." aria-required="true"/>
+
+<label for="scheduleTime" class="sr-only"> Schedule message </label>
+
+<input type="datetime-local" id="scheduleTime"/>
+
+<button
+id="sendBtn"
+aria-label="Send message"> Send </button>
+
+</section>
+
+</div>
+
+</main>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
