@@ -17,7 +17,7 @@ app.use(express.json());
 
 // Serve frontend static files from same server
 //frontend to backend folder
-app.use(express.static(path.join(__dirname, "../frontend")));
+app.use(express.static(path.join(__dirname, "../Chat-frontend")));
 
 const io = new Server(server, {
     cors: { 
@@ -227,8 +227,11 @@ io.on("connection", (socket) => {
     console.log("User connected:", socket.id);
 
     // Send existing messages and online users
-    socket.emit("load_messages", messages);
-    emitOnlineUsers();
+    socket.emit("load_messages",
+    messages.filter(
+        m => m.delivered
+    )
+);
 
     // JOIN - User sets username
     socket.on("join", (username) => {
@@ -252,17 +255,36 @@ io.on("connection", (socket) => {
         socket.broadcast.emit("user_joined", cleanName);
     });
 
+
     // TYPING INDICATOR - FEATURE
-    let typingTimeout;
-    socket.on("typing", () => {
-        if (!socket.username) return;
-        socket.broadcast.emit("typing", socket.username);
-        
-        clearTimeout(typingTimeout);
-        typingTimeout = setTimeout(() => {
-            socket.broadcast.emit("stop_typing", socket.username);
-        }, 2000);
-    });
+   const typingTimers = new Map();
+
+socket.on("typing",()=>{
+
+    socket.broadcast.emit(
+        "typing",
+        socket.username
+    );
+
+    clearTimeout(
+        typingTimers.get(socket.id)
+    );
+
+    const timer=setTimeout(()=>{
+
+        socket.broadcast.emit(
+            "stop_typing",
+            socket.username
+        );
+
+    },2000);
+
+    typingTimers.set(
+        socket.id,
+        timer
+    );
+
+});
 
     // SEND MESSAGE
     socket.on("send_message", (message) => {
