@@ -505,17 +505,85 @@ border-radius:3px;
 /* Responsive */
 
 @media (max-width:640px){
-.chat-container{
-height:100vh;
-max-width:100%;
-border-radius:0;
-}
+  .chat-container{
+    height:100dvh;
+    max-width:100%;
+    border-radius:0;
+  }
 
-.message-input-section{
-flex-direction:column;
-}
+  .chat-header{
+    padding:12px;
+  }
 
-#scheduleTime{
-width:100%;
-}
+  .chat-header h1{
+    font-size:28px;
+  }
+
+  .chat-header h2{
+    font-size:14px;
+  }
+
+  .online-users{
+    padding:10px 12px;
+    max-height:120px;
+  }
+
+  .messages{
+    padding:12px;
+    gap:12px;
+  }
+
+  .message{
+    padding:12px;
+  }
+
+  .message-header{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:2px;
+  }
+
+  .message-text{
+    font-size:15px;
+  }
+
+  .reactions{
+    gap:6px;
+  }
+
+  .reactions button{
+    padding:8px 12px;
+    min-height:44px;
+    font-size:13px;
+  }
+
+  .message-input-section{
+    flex-direction:column;
+    gap:8px;
+    padding:12px;
+  }
+
+  #messageInput,
+  #scheduleTime{
+    width:100%;
+    flex:none;
+    padding:14px;
+    font-size:16px; 
+  }
+
+  #colorPicker{
+    width:48px;
+    height:48px;
+  }
+
+  #sendBtn{
+    width:100%;
+    padding:14px;
+    font-size:16px;
+  }
+
+  .reply-indicator{
+    padding:10px 12px;
+    font-size:13px;
+  }
 }
