@@ -1,4 +1,4 @@
-const socket = io("http://ho9d1ruaqtcgefkqiyqdctch.178.105.39.91.sslip.io")
+const socket = io("https://ho9d1ruaqtcgefkqiyqdctch.178.105.39.91.sslip.io")
 
 // DOM Elements
 const usernameInput = document.getElementById("username");
