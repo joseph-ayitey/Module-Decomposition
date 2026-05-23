@@ -1,8 +1,4 @@
-const socket = io("http://ho9d1ruaqtcgefkqiyqdctch.178.105.39.91.sslip.io:3000", {
-    transports: ["websocket"],
-    reconnectionAttempts: 5,
-    timeout: 5000
-});
+const socket = io("http://ho9d1ruaqtcgefkqiyqdctch.178.105.39.91.sslip.io")
 
 // DOM Elements
 const usernameInput = document.getElementById("username");
