@@ -255,6 +255,7 @@ io.on("connection", (socket) => {
         socket.broadcast.emit("user_joined", cleanName);
     });
 
+
     // TYPING INDICATOR - FEATURE
    const typingTimers = new Map();
 
